@@ -1,16 +1,14 @@
-import React from 'react';
-import avatarPath from '../images/avatar.jpg';
-import App from './App';
+import React, { useState, useEffect } from 'react'
 import Card from './Card';
 import apiConnect from '../utils/Api';
 
 function Main({onEditProfil, onEditAvatar, onAddPlace, onCardClick}) {
-  const [userName, setUserName] = React.useState('');
-  const [userDescription, setUserDescription] = React.useState('');
-  const [userAvatar, setUserAvatar] = React.useState('');
-  const [cards, setCards] = React.useState([]);
+  const [userName, setUserName] = useState('');
+  const [userDescription, setUserDescription] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
+  const [cards, setCards] = useState([]);
   
-  React.useEffect(() =>{
+  useEffect(() =>{
     Promise.all([apiConnect.getProfileInfo(), apiConnect.getInitialCards()])
   .then(([response, card]) => {
       setUserName(response.name);
@@ -19,7 +17,7 @@ function Main({onEditProfil, onEditAvatar, onAddPlace, onCardClick}) {
       setCards(card);
     })
     .catch(err => console.log(err));
-  })
+  }, [])
 
   return (
     <main className="content">
@@ -30,11 +28,6 @@ function Main({onEditProfil, onEditAvatar, onAddPlace, onCardClick}) {
             type="button" onClick={onEditAvatar}
           >
             <div className="profile__avatar" style={{ backgroundImage: `url(${userAvatar})`, objectFit: "contain" }} ></div>
-            {/* <img
-              src={avatarPath}
-              alt="Аватар пользователя"
-              className="profile__avatar"
-            /> */}
           </button>
           <div className="profile__info">
             <div className="user-field">
