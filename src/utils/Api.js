@@ -64,21 +64,39 @@ class Api {
     }).then(this._responseStatus);
   }
 
-  // постановка лайка
-  putLike(data) {
-    return fetch(`${this._baseUrl}/cards/${data}/likes/`, {
-      method: 'PUT',
-      headers: this._headers,
-    }).then(this._responseStatus);
+  // // постановка лайка
+  // putLike(data) {
+  //   return fetch(`${this._baseUrl}/cards/${data}/likes/`, {
+  //     method: 'PUT',
+  //     headers: this._headers,
+  //   }).then(this._responseStatus);
+  // }
+
+  // // снятие лайка
+  // deleteLike(data) {
+  //   return fetch(`${this._baseUrl}/cards/${data}/likes/`, {
+  //     method: 'DELETE',
+  //     headers: this._headers,
+  //   }).then(this._responseStatus);
+  // }
+
+  // работа кнопки лайк
+  changeLikeCardStatus (data, isLiked) {
+    if (isLiked) {
+      return fetch(`${this._baseUrl}/cards/${data}/likes/`, {
+        method: 'PUT',
+        headers: this._headers,
+      })
+      .then(this._responseStatus);
+    } else {
+      return fetch(`${this._baseUrl}/cards/${data}/likes/`, {
+        method: 'DELETE',
+        headers: this._headers,
+      })
+      .then(this._responseStatus);
+    }
   }
 
-  // снятие лайка
-  deleteLike(data) {
-    return fetch(`${this._baseUrl}/cards/${data}/likes/`, {
-      method: 'DELETE',
-      headers: this._headers,
-    }).then(this._responseStatus);
-  }
 
   // удаление карточки
   removeCard(data) {
