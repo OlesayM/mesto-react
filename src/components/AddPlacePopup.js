@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm';
-import CurrentUserContext from '../contexts/CurrentUserContext';
 
 function AddPlacePopup({ onClose, isOpen, onAddPlace, onLoading }) {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
-  // Подписка на контекст
-  const currentUser = React.useContext(CurrentUserContext);
 
-  // После загрузки текущего пользователя из API
-  // его данные будут использованы в управляемых компонентах.
   useEffect(() => {
-    setTitle(currentUser.title);
-    setLink(currentUser.link);
-  }, [currentUser, isOpen]);
+    setTitle("");
+    setLink("");
+  }, [isOpen]);
 
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы

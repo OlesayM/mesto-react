@@ -138,7 +138,7 @@ function App() {
         <div className="page">
           <Header />
           <Main
-            onEditProfil={handleEditProfileClick}
+            onEditProfile={handleEditProfileClick}
             onEditAvatar={handleEditAvatarClick}
             onAddPlace={handleAddPlaceClick}
             onCardClick={handleCardClick}

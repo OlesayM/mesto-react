@@ -3,7 +3,7 @@ import Card from './Card';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
 function Main({
-  onEditProfil,
+  onEditProfile,
   onEditAvatar,
   onAddPlace,
   onCardClick,
@@ -36,7 +36,7 @@ function Main({
               <button
                 className="profile__editbutton"
                 type="button"
-                onClick={onEditProfil}
+                onClick={onEditProfile}
               ></button>
             </div>
             <p className="profile__occupation">{currentUser.about}</p>
@@ -52,7 +52,6 @@ function Main({
         {cards.map((card) => (
           <Card
             card={card}
-            id={card.id}
             key={card._id}
             name={card.name}
             link={card.link}
